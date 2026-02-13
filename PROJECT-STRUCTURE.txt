@@ -1,0 +1,49 @@
+Student Management System - Ready to Deploy
+
+PROJECT STRUCTURE:
+==================
+
+WebContent/                          (Your web root - deploy this)
+├── index.jsp                        (Home page)
+├── WEB-INF/
+│   ├── web.xml                      (Servlet configuration)
+│   ├── classes/                     (Compile your Java files here)
+│   │   ├── hibernate.cfg.xml        (Already copied)
+│   │   └── com/student/             (Compile Java classes here)
+│   ├── lib/                         (Put JAR files here)
+│   │   ├── hibernate-core-5.6.15.Final.jar
+│   │   ├── mysql-connector-java-8.0.33.jar
+│   │   ├── jstl-1.2.jar
+│   │   └── (other Hibernate dependencies)
+│   └── views/
+│       ├── student-list.jsp
+│       └── student-form.jsp
+
+src/main/java/com/student/          (Source files)
+├── model/Student.java
+├── dao/StudentDAO.java
+├── servlet/StudentServlet.java
+├── util/HibernateUtil.java
+└── listener/AppContextListener.java
+
+WHAT YOU NEED TO DO:
+====================
+
+1. Add JAR files to WebContent/WEB-INF/lib/
+   - Download Hibernate JARs
+   - Download MySQL Connector JAR
+   - Download JSTL JAR
+
+2. Compile Java files:
+   javac -d WebContent/WEB-INF/classes -cp "WebContent/WEB-INF/lib/*" src/main/java/com/student/*/*.java
+
+3. Deploy WebContent folder to your Tomcat or create WAR:
+   - Copy WebContent to Tomcat webapps as "student-management"
+   - OR create WAR: jar -cvf student-management.war -C WebContent .
+
+4. Access: http://localhost:8080/student-management/
+
+DATABASE:
+=========
+- Database: student_db (already set up)
+- Update credentials in: WebContent/WEB-INF/classes/hibernate.cfg.xml
